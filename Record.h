@@ -37,6 +37,17 @@ public:
       // Finally, return os
       return os;
     }
+
+    Attribute getAttribute(string n) {
+	    for (Attribute a : attributes) {
+		if (a.name == n) {
+			return a;
+		}
+	    }
+	    return null;
+    }
+
+
 };
 
 #endif

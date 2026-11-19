@@ -8,32 +8,61 @@ using namespace std;
 #include "FileReader.h"
 
 class Project : public Operator {
-  public:
-    // Project constructors
-    Project(string fileName, vector<string> fieldNames) {
-      // Implement this
+  	private:
+		Operator oper;
+		vector<string> fields;
 
-      // You would leverage the use of the FileReader class here
-    }
-    Project(Operator *op, vector<string> fieldNames) {
-      // Implement this
-    }
 
-    void open() {
-      // Implement this
-    }
+	public:
+    		// Project constructors
+    		Project(string fileName, vector<string> fieldNames) {
+      			// Implement this
+			oper = new FileReader(fileName, 4); // FIXME Hardcoded size of 4??
+			fields = fieldNames;
+		
+      			// You would leverage the use of the FileReader class here
+    		}
+    		
+		Project(Operator *op, vector<string> fieldNames) {
+      			// Implement this
+			oper = *op;
+			fields = fieldNames;
+    		}	
 
-    vector<Record> next() {
-      vector<Record> outPage;
-      // Implement this
+    		void open() {
+      			// Implement this
+			if (oper != null) {
+				oper.open();
+			}
+    		}
 
-      // Return an empty vector if no more pages exist
-      return outPage;
-    }
+    		vector<Record> next() {
+      			vector<Record> outPage;
+      			// Implement this
+			vector<Record> page = oper.next();
+			int cursor = 0;
+			while (!page.empty()) {
+				Record r = page[cursor];
+				Record newR = nw Record();
+				for (string s : fieldNames) {
+					Attribute a = r.getAttribute(s);
+					if (a != null) {
+						newR.addAttribute (a)
+					}
+				}
+				outPage.push_back(newR);
+				cursor++;
+			}
 
-    void close() {
-      // Implement this
-    }
+      			// Return an empty vector if no more pages exist
+      			return outPage;
+    		}
+
+    		void close() {
+      			if (oper != null) {
+				oper.close();
+			}
+    		}
 };
 
 #endif
