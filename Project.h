@@ -43,11 +43,11 @@ class Project : public Operator {
 			int cursor = 0;
 			while (!page.empty()) {
 				Record r = page[cursor];
-				Record newR = nw Record();
+				Record newR = new Record();
 				for (string s : fieldNames) {
 					Attribute a = r.getAttribute(s);
 					if (a != null) {
-						newR.addAttribute (a)
+						newR.addAttribute(a)
 					}
 				}
 				outPage.push_back(newR);
