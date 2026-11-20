@@ -9,7 +9,8 @@ using namespace std;
 
 class Project : public Operator {
   	private:
-		Operator oper;
+		Operator *input;
+		FileReader fr;
 		vector<string> fields;
 
 
@@ -17,24 +18,21 @@ class Project : public Operator {
     		// Project constructors
     		Project(string fileName, vector<string> fieldNames) {
       			// Implement this
-			oper = new FileReader(fileName, 4); // FIXME Hardcoded size of 4??
-			fields = fieldNames;
-		
+			fr = FileReader(fileName, 4);
+			input = &fr;
       			// You would leverage the use of the FileReader class here
     		}
     		
 		Project(Operator *op, vector<string> fieldNames) {
       			// Implement this
-			oper = *op;
-			fields = fieldNames;
+			input = op;
     		}	
 
     		void open() {
       			// Implement this
-			if (oper != null) {
-				oper.open();
+			if (input != null) {
+				input->open();
 			}
-    		}
 
     		vector<Record> next() {
       			vector<Record> outPage;
@@ -44,7 +42,7 @@ class Project : public Operator {
 			while (!page.empty()) {
 				Record r = page[cursor];
 				Record newR = new Record();
-				for (string s : fieldNames) {
+				for (string s : fields) {
 					Attribute a = r.getAttribute(s);
 					if (a != null) {
 						newR.addAttribute(a)
