@@ -29,10 +29,10 @@ public:
     friend ostream& operator<< (ostream& os, const Record& r) {
       // Implement this to write a string to os displaying all attribute values
       for (Attribute attr : r.attributes) {
-          os << attr.name << ", ";
-          os << attr.type << ", ";
-          os << attr.value << ", ";
-          os << endl;
+          //os << attr.name << ", ";
+          //os << attr.type << ", ";
+          os << attr.value << endl;
+          //os << endl;
       }
       // Finally, return os
       return os;
@@ -44,7 +44,7 @@ public:
 			return a;
 		}
 	    }
-	    return null;
+	    return Attribute("","","");
     }
 
 

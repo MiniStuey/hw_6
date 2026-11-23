@@ -27,7 +27,6 @@ vector<string> split(string line) {
 class FileReader : public Operator {
     private:
     fstream file;
-    int pageSize;
     string line;
     string filename;
     int currPage = 0;
@@ -35,8 +34,10 @@ class FileReader : public Operator {
     vector<string> attributeTypes;
     public:
 
-    FileReader(string fname, int pSize) {
-        pageSize = pSize;
+    FileReader() {
+    }
+
+    FileReader(string fname) {
         filename = fname;
     }
 
