@@ -1,12 +1,28 @@
-FirstName,LastName,Year,GPA
-String,String,String,Double
+FirstName,LastName,Year,GPA,Major,Department,Credits,Tuition,Scholarship
+String,String,String,Double,String,String,Double,Double,Double
 ---------------------------
-Chris,Knight,Fr,3.8
-Mitch,Taylor,Jr,3.6
-Lazlo,Hollyfeld,Sr,4.0
-Paul,Stephens,Sr,3.2
-David,Lightman,Jr,2.8
-Stephen,Falken,Jr,3.7
-Joshua,Falken,Fr,3.2
-Dade,Murphy,So,3.3
-Kate,Libby,Jr,3.9
+Chris,Knight,Fr,3.8,Computer Science,Engineering,15,12000,2500
+Mitch,Taylor,Jr,3.6,Mathematics,Science,12,11500,1000
+Lazlo,Hollyfeld,Sr,4.0,Physics,Science,16,12500,5000
+Paul,Stephens,Sr,3.2,History,Arts,12,10500,500
+David,Lightman,Jr,2.8,Computer Science,Engineering,14,12000,0
+Stephen,Falken,Jr,3.7,Physics,Science,15,12500,2000
+Joshua,Falken,Fr,3.2,Mathematics,Science,13,11500,750
+Dade,Murphy,So,3.3,Cybersecurity,Engineering,15,12000,1500
+Kate,Libby,Jr,3.9,Computer Science,Engineering,16,12000,3500
+Matthew,Brody,Fr,3.5,Biology,Science,14,11800,1000
+Jennifer,Connelly,Sr,3.9,English,Arts,12,10500,2500
+Robert,McCall,So,2.9,Business,Business,15,11000,0
+Sarah,Connor,Jr,3.7,Mechanical Engineering,Engineering,16,13000,3000
+John,McClane,Sr,3.1,Criminal Justice,Arts,12,10800,500
+Ellen,Ripley,Fr,3.8,Biology,Science,15,11800,2000
+Marty,McFly,So,3.4,Music,Arts,14,10500,1000
+Doc,Brown,Sr,3.6,Chemistry,Science,13,12500,1500
+Peter,Parker,Fr,3.9,Biology,Science,16,11800,4000
+Bruce,Wayne,Jr,3.5,Business,Business,15,11000,2500
+Clark,Kent,Sr,4.0,Journalism,Arts,12,10500,5000
+Tony,Stark,Sr,3.9,Electrical Engineering,Engineering,16,13000,4500
+Natasha,Romanoff,Jr,3.8,Psychology,Arts,14,10800,3000
+Steve,Rogers,Sr,3.7,History,Arts,12,10500,2000
+Wanda,Maximoff,So,3.6,Physics,Science,15,12500,1750
+Bruce,Banner,Jr,4.0,Biochemistry,Science,16,12500,5000
