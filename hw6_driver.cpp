@@ -22,7 +22,7 @@ int main() {
   cout << r << endl;
   */
 
-  FileReader op2 = FileReader("student.data", 4);
+  FileReader op2 = FileReader("student.data");
   op2.open();
 
   vector<Record> page;

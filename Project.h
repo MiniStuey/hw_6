@@ -2,38 +2,68 @@
 #define PROJECT_H
 
 #include <vector>
+#include <string>
 using namespace std;
 #include "Record.h"
 #include "Operator.h"
 #include "FileReader.h"
 
 class Project : public Operator {
-  public:
-    // Project constructors
-    Project(string fileName, vector<string> fieldNames) {
-      // Implement this
+  	private:
+		Operator *input;
+		FileReader fr;
+		vector<string> fields;
 
-      // You would leverage the use of the FileReader class here
-    }
-    Project(Operator *op, vector<string> fieldNames) {
-      // Implement this
-    }
 
-    void open() {
-      // Implement this
-    }
+	public:
+    		// Project constructors
+    		Project(string fileName, vector<string> fieldNames) {
+      			// Implement this
+			fr = FileReader(fileName);
+			input = &fr;
+            fields = fieldNames;
+      			// You would leverage the use of the FileReader class here
+    		}
+    		
+			Project(Operator *op, vector<string> fieldNames) {
+      			// Implement this
+			input = op;
+            fields = fieldNames;
+    		}	
 
-    vector<Record> next() {
-      vector<Record> outPage;
-      // Implement this
+    		void open() {
+      			// Implement this
+			if (input != nullptr) {
+				input->open();
+			}
+            }
 
-      // Return an empty vector if no more pages exist
-      return outPage;
-    }
+    		vector<Record> next() {
+      			vector<Record> outPage;
+				vector<Record> inPage = input->next();
+      			// Implement this
 
-    void close() {
-      // Implement this
-    }
+				for (Record r : inPage) {
+					Record newR;
+
+					for (string s : fields) {
+						Attribute a = r.getAttribute(s);
+						
+                        if (a.name != "") {
+                            newR.addAttribute(a);
+                        }
+					}
+					outPage.push_back(newR);
+				}
+
+				return outPage;
+			}
+
+    		void close() {
+      			if (input != nullptr) {
+				input->close();
+				}
+    		}
 };
 
 #endif
