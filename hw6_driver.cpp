@@ -6,7 +6,9 @@ using namespace std;
 
 int main() {
 
-  Project op1("student.data", {"FirstName", "LastName"});
+  Project op0("student.data", {"FirstName", "LastName", "Year", "GPA", "Scholarship"});
+
+  Project op1(&op0, {"FirstName", "LastName", "GPA"});
   op1.open();
 
   int recordCount=0;
